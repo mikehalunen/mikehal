@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Mike Halunen</title>
+
+   <!-- <link rel="stylesheet" href="/css/normalize.css"> -->
+  <link rel="stylesheet" href="/css/foundation.css">
+
+  
+  
+
+  <script src="/js/vendor/custom.modernizr.js"></script>
+
+</head>
+<body>
+
+  <div class="row">
+    <div class="header large-12 columns">
+      <h1><a href="/">Mike Halunen</a></h1>
+    </div>
+  </div>
+
+      
+  <div class="row">
+    <div class="large-12 columns">
+      <div class="panel">
+        
+<div class="post">
+	<h2><a href="/blog/responsive-vs-adaptive.html">Responsive vs Adaptive: Missing the point</a></h2>
+  	<span>09 Aug 2013</span>
+  	<div><h3 id='shootouts_bloody_shootouts'>Shoot-outs, bloody shoot-outs</h3>
+
+<p>The digital space sure sees it&#8217;s fair share of religious debates. These debates usually manifest in binary comparisons like &#8220;web vs native&#8221;, or &#8220;flat vs skeuomorphic&#8221; or &#8220;django vs rails&#8221;. Over the past couple weeks, I&#8217;ve noted that responsive design and adaptive design have been pitted against one another in a similar manner.</p>
+
+<p>In general, I&#8217;m not a fan of these shoot-outs. I feel that they often lack understanding and experience. To me, comparing responsive and adaptive is an apples to oranges comparison. It clouds our judgment and does a disservice to both the apple and the orange.</p>
+
+<p>Before digging into implementation-level specifics, we should quickly touch on some definitions.</p>
+
+<p>Merriam-Webster defines <em>adaptive</em> as:</p>
+
+<blockquote>
+<p>showing or having a capacity for or tendency toward adjustment to environmental conditions</p>
+</blockquote>
+
+<p>According to Wikipedia, Responsive Web Design is defined as:</p>
+
+<blockquote>
+<p>A site that <em>adapts</em> the layout to the viewing environment by using fluid, proportion-based grids, flexible images, and CSS3 media queries, an extension of the @media rule</p>
+</blockquote>
+
+<p>At the outset here, there&#8217;s little indication that adaptive and responsive approaches are mutually exclusive. The very definition of <em>RWD</em> contains a reference to <em>adaptation</em>. Maybe it&#8217;s inaccurate to juxtapose responsive and adaptive in a &#8216;either/or&#8217; manner.</p>
+
+<h3 id='a_scale_not_buckets'>A scale, not buckets</h3>
+
+<p>Let&#8217;s consider a shift in perspective. Instead, let&#8217;s look at adaptive design as a high-level strategy, one that affords different levels of adaptation via a range of techniques. Let&#8217;s think of adaptive design as a scale of techniques range from <em>no adaptation</em> at one end, to <em>highly adaptive</em> on the other. Let&#8217;s also consider that RWD is one such technique within that scale.</p>
+
+<p>To make sense of this and better understand the full set of available techniques, we&#8217;ll need to explore the various techniques that live on this scale</p>
+
+<p><strong>1. Zero Adaptation</strong></p>
+
+<p>No consideration are made to the environment in which a site being viewed.</p>
+
+<p>Key Characteristics:</p>
+
+<ul>
+<li>The content hierarchy is always the same</li>
+
+<li>The layout is the same everywhere</li>
+
+<li>The goals of the site are the same in all contexts</li>
+
+<li>No adaptations are made to the core experience</li>
+</ul>
+
+<p><img alt='alt text' src='/img/scale-of-adaptation/1.png' /></p>
+
+<p><strong>2. Pure RWD</strong></p>
+
+<p>This is RWD as it was originally defined. Most of the early RWD implementations fell into this category. This specific approach garnered negative attention for being a non-compelling solution that performed poorly on mobile.</p>
+
+<p>Key Characteristics:</p>
+
+<ul>
+<li>The content hierarchy is the same across all experiences</li>
+
+<li>A user&#8217;s top tasks are the same for all contexts</li>
+
+<li>All adaptation is handled through browser-based feature detection</li>
+
+<li>Layout adaptations to the core experience are driven by the screen size</li>
+</ul>
+
+<p><img alt='alt text' src='/img/scale-of-adaptation/2.png' /></p>
+
+<p><strong>3. RWD + Progressive Enhancement</strong></p>
+
+<p>To me, this is where things start to get interesting. We start with a base of flexible content and enhance the experience for specific context. This allows us to make the experience fast and functional on small screens, while being rich and immersive on large screens. This approach requires a general acceptance that the web is a complex and nuanced medium. But doing so allows us to create compelling experiences across contexts.</p>
+
+<p>Key Characteristics:</p>
+
+<ul>
+<li>The <em>majority</em> of the content hierarchy is the same across all experiences</li>
+
+<li>A user&#8217;s top tasks are the same for all contexts</li>
+
+<li>All adaptation is handled through browser-based feature detection</li>
+
+<li>Layout and interface adaptations to the core experience are driven by the screen size AND other browser capabilities</li>
+
+<li>Adaptations are treated as enhancements to the core experience</li>
+</ul>
+
+<p><img alt='alt text' src='/img/scale-of-adaptation/3.png' /></p>
+
+<p><strong>4. Single URL, Different Experience</strong></p>
+
+<p>The level of adaptation has diverged to the point where the core experience is smaller than the total sum of the adaptations.</p>
+
+<p>This use case is less common but is typified by applications that run the content through device-specific (mobile/tablet/desktop) view layers. This affords a high-level of device-specific adaptation.</p>
+
+<p>Key Characteristics:</p>
+
+<ul>
+<li>Different content hierarchy for different contexts</li>
+
+<li>Layout configurations are driven by the device type</li>
+
+<li>Top tasks begin to depend on the specific context</li>
+
+<li>Experiences deviate as the level of adaptation starts to outweigh the core experience</li>
+
+<li>Adaptation logic migrates from the client to the server in the form of user-agent sniffing and device detection</li>
+</ul>
+
+<p><img alt='alt text' src='/img/scale-of-adaptation/4.png' /></p>
+
+<p><strong>5. Different URL, Different Experience</strong></p>
+
+<p>This use case is typified by separate mobile, tablet or desktop web experiences. This approach affords the highest level of device-specific adaptation. It&#8217;s also the most problematic.</p>
+
+<p>Key Characteristics:</p>
+
+<ul>
+<li>Top task depend on the context</li>
+
+<li>Content and layout differ by context</li>
+
+<li>Experiences are completely different from one another</li>
+
+<li>Experiences share little, if anything in common</li>
+
+<li>This approach was typified by separate mobile, tablet and desktop experiences</li>
+
+<li>All adaptation needs to be handled server-side</li>
+
+<li>Requires maintaining multiple experiences</li>
+</ul>
+
+<p><img alt='alt text' src='/img/scale-of-adaptation/5.png' /></p>
+
+<h3 id='a_blurring_of_lines'>A blurring of lines</h3>
+
+<p>Of course, even I am generalizing here, as some of the above techniques can be combined in new and interesting ways. Overall, I have developed a bit of an aversion to device detection and user-agent sniffing. To me, it&#8217;s increasingly difficult to make assumptions about a users context and subsequently try to coerce users into device-specific experiences.</p>
+
+<p>The lines continue to blur.</p></div>
+	
+</div>  
+<hr/>
+
+  
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="header large-12 columns">
+      <p><a href="/blog">All Articles</a></p>
+    </div>
+  </div>
+</body>
+</html>

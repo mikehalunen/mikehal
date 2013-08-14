@@ -1,0 +1,11 @@
+---
+layout: default
+title: Mike Halunen
+---
+{% for post in site.posts limit: 5 %}
+<div class="post">
+	<p><a href="{{ post.url }}">{{ post.title }}</a> | <span>{{ post.date | date_to_string }}</span></p>
+</div>  
+<hr/>
+{% endfor %}
+  
